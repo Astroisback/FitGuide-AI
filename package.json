@@ -1,0 +1,16 @@
+{
+  "name": "fitguide-ai",
+  "version": "1.0.0",
+  "description": "AI fitness assistant that recommends workouts using the Gemini API",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "dev": "node --watch --env-file-if-exists=.env server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22.9"
+  },
+  "license": "MIT"
+}

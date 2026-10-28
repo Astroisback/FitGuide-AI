@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FitGuide AI – Personal Workout Assistant</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><img src="favicon.svg" alt="" width="32" height="32" /> FitGuide <span>AI</span></div>
+    <span id="ai-badge" class="badge">Checking AI…</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Your AI workout coach</h1>
+      <p>Tell us how you like to train, how much time you have, and what hurts. Gemini builds a safe plan with sets, reps, rest and pictures for every exercise.</p>
+    </section>
+
+    <form id="plan-form" class="card" novalidate>
+      <fieldset>
+        <legend>1. What type of training?</legend>
+        <div id="workout-types" class="choice-grid"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. How much time do you have?</legend>
+        <div class="duration">
+          <input id="duration" name="duration" type="range" />
+          <output id="duration-out" for="duration"></output>
+        </div>
+      </fieldset>
+
+      <div class="row">
+        <fieldset>
+          <legend>3. Fitness level</legend>
+          <select id="level" name="level"></select>
+        </fieldset>
+        <fieldset>
+          <legend>4. Body part to train</legend>
+          <select id="focus" name="focus"></select>
+        </fieldset>
+      </div>
+
+      <fieldset>
+        <legend>5. Any pain or discomfort? <small>(we will avoid loading these areas)</small></legend>
+        <div id="pain-areas" class="chips"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>6. Anything else? <small>(optional)</small></legend>
+        <textarea id="notes" name="notes" maxlength="300" rows="2" placeholder="e.g. training at home with only dumbbells, want to improve pull-ups"></textarea>
+      </fieldset>
+
+      <p id="form-error" class="error" role="alert" hidden></p>
+      <button id="submit" type="submit" class="primary">Generate my workout</button>
+    </form>
+
+    <section id="result" aria-live="polite" hidden></section>
+  </main>
+
+  <dialog id="detail">
+    <article>
+      <button class="close" type="button" aria-label="Close">×</button>
+      <div id="detail-body"></div>
+    </article>
+  </dialog>
+
+  <footer>
+    Exercise data and images: <a href="https://github.com/yuhonas/free-exercise-db" target="_blank" rel="noopener">free-exercise-db</a> (public domain).
+    This app gives general guidance, not medical advice.
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
